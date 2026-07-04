@@ -1,0 +1,55 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: min(1320px, calc(100% - 40px));
+  height: 74px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border-bottom: 1px solid rgba(245, 240, 230, 0.14);
+  background: rgba(7, 9, 8, 0.72);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.brand,
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 12px;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #070908;
+  background: #f5f0e6;
+}
+
+.nav-links {
+  gap: 28px;
+  color: rgba(245, 240, 230, 0.58);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  transition: color 180ms ease;
+}
+
+.nav-links a:hover {
+  color: #f5f0e6;
+}
+

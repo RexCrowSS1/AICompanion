@@ -1,0 +1,32 @@
+.system-grid {
+  padding: 56px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245, 240, 230, 0.14);
+}
+
+.quality-card {
+  min-height: 238px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+  background: #0f1211;
+  transform: translate3d(0, calc((1 - var(--scroll-progress, 0)) * 30px), 0);
+}
+
+.quality-card svg {
+  color: #b75d48;
+}
+
+.memory-band {
+  min-height: 46vh;
+  padding: 96px 0 122px;
+  border-top: 1px solid rgba(245, 240, 230, 0.14);
+}
+
+.memory-band h2 {
+  max-width: 1040px;
+}

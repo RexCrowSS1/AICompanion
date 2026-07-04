@@ -1,0 +1,31 @@
+.ticker-band {
+  overflow: hidden;
+  border-top: 1px solid rgba(245, 240, 230, 0.14);
+  border-bottom: 1px solid rgba(245, 240, 230, 0.14);
+  background: #f5f0e6;
+  color: #070908;
+}
+
+.ticker-band div {
+  width: max-content;
+  display: flex;
+  gap: 0;
+  padding: 15px 0;
+  animation: tickerMove 24s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 34px;
+  padding-right: 34px;
+}
+
+.ticker-band span {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
