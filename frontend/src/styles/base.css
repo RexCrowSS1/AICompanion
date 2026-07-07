@@ -125,6 +125,12 @@ p {
   opacity: 1;
 }
 
+.has-custom-cursor.cursor-hidden .cursor-dot,
+.has-custom-cursor.cursor-hidden .cursor-ring,
+.has-custom-cursor.cursor-hidden .cursor-scan {
+  opacity: 0;
+}
+
 .cursor-dot {
   width: 8px;
   height: 8px;
@@ -203,4 +209,3 @@ p {
 .chat-layout[data-scroll-motion].is-visible {
   transform: translate3d(0, calc((1 - var(--scroll-progress, 0)) * 22px), 0);
 }
-

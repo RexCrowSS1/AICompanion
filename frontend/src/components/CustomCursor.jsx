@@ -9,6 +9,7 @@ export default function CustomCursor() {
     const finePointer = window.matchMedia("(pointer: fine)");
     if (!finePointer.matches) return undefined;
 
+    const root = document.documentElement;
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let ringX = mouseX;
@@ -16,8 +17,10 @@ export default function CustomCursor() {
     let frame = 0;
 
     function setActive(target) {
-      const active = Boolean(target.closest("a, button, input, textarea, [data-cursor='focus']"));
-      document.documentElement.classList.toggle("cursor-active", active);
+      const active =
+        target instanceof Element &&
+        Boolean(target.closest("a, button, input, textarea, [data-cursor='focus']"));
+      root.classList.toggle("cursor-active", active);
     }
 
     function onMove(event) {
@@ -27,6 +30,17 @@ export default function CustomCursor() {
         element?.style.setProperty("--x", `${mouseX}px`);
         element?.style.setProperty("--y", `${mouseY}px`);
       });
+      root.classList.remove("cursor-hidden");
+      setActive(event.target);
+    }
+
+    function onLeave() {
+      root.classList.add("cursor-hidden");
+      root.classList.remove("cursor-active");
+    }
+
+    function onEnter(event) {
+      root.classList.remove("cursor-hidden");
       setActive(event.target);
     }
 
@@ -38,13 +52,19 @@ export default function CustomCursor() {
       frame = window.requestAnimationFrame(animate);
     }
 
-    document.documentElement.classList.add("has-custom-cursor");
+    root.classList.add("has-custom-cursor");
     window.addEventListener("mousemove", onMove, { passive: true });
+    root.addEventListener("mouseenter", onEnter);
+    root.addEventListener("mouseleave", onLeave);
+    window.addEventListener("blur", onLeave);
     animate();
 
     return () => {
-      document.documentElement.classList.remove("has-custom-cursor", "cursor-active");
+      root.classList.remove("has-custom-cursor", "cursor-active", "cursor-hidden");
       window.removeEventListener("mousemove", onMove);
+      root.removeEventListener("mouseenter", onEnter);
+      root.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("blur", onLeave);
       window.cancelAnimationFrame(frame);
     };
   }, []);
