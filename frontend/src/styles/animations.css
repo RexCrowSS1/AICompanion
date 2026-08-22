@@ -1,28 +1,11 @@
-@keyframes backgroundScan {
-  from {
-    background-position: 0% 0%;
-  }
-  to {
-    background-position: 120% 80%;
-  }
-}
-
-@keyframes cursorSpin {
-  from {
-    rotate: 0deg;
-  }
-  to {
-    rotate: 360deg;
-  }
-}
-
 @keyframes tickerMove {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes onlinePulse {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0.45; }
 }
 
 @keyframes messageIn {
@@ -36,3 +19,12 @@
   }
 }
 
+@keyframes typingBlink {
+  0%, 35% { opacity: 0.25; }
+  36%, 100% { opacity: 1; }
+}
+
+@keyframes discTurn {
+  from { transform: rotate(-8deg); }
+  to { transform: rotate(352deg); }
+}

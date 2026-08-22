@@ -31,10 +31,10 @@ cp .env.example .env
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8001
 ```
 
-Backend berjalan di `http://localhost:8000`.
+Backend berjalan di `http://localhost:8001`.
 
 ## Menjalankan Frontend
 
@@ -44,14 +44,18 @@ npm install
 npm run dev
 ```
 
-Frontend berjalan di `http://localhost:5173`.
+Frontend berjalan di `http://localhost:5174`.
+
+Secara default frontend memakai endpoint same-origin `/api`. Vite akan meneruskannya ke
+backend lokal `http://127.0.0.1:8001`, jadi alamat IP LAN tidak perlu ditulis manual.
+Untuk production, isi `VITE_API_URL` dengan URL HTTPS backend atau sediakan reverse proxy `/api`.
 
 ## Menjalankan Backend dan Frontend Sekaligus
 
 Setelah dependency backend dan frontend sudah terinstall, kamu bisa menyalakan semuanya dengan satu file:
 
 ```bash
-cd /Users/sayyidinaanshariahmad/Documents/Codex/2026-07-03/ai/outputs/ai-companion
+cd /path/to/ai-companion
 ./start.sh
 ```
 

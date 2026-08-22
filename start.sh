@@ -6,6 +6,7 @@ BACKEND_DIR="$ROOT_DIR/backend"
 FRONTEND_DIR="$ROOT_DIR/frontend"
 BACKEND_PORT="${BACKEND_PORT:-8001}"
 FRONTEND_PORT="${FRONTEND_PORT:-5174}"
+BACKEND_PYTHON="$BACKEND_DIR/.venv/bin/python"
 
 BACKEND_PID=""
 FRONTEND_PID=""
@@ -58,7 +59,7 @@ wait_for_backend() {
 
 echo "Menyiapkan Eclps Assistance..."
 
-if [[ ! -d "$BACKEND_DIR/.venv" ]]; then
+if [[ ! -x "$BACKEND_PYTHON" ]]; then
   echo "Backend virtualenv belum ada. Buat dulu dengan:"
   echo "cd \"$BACKEND_DIR\" && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
   exit 1
@@ -94,8 +95,7 @@ fi
 echo "Menyalakan backend di http://localhost:$BACKEND_PORT"
 (
   cd "$BACKEND_DIR"
-  source .venv/bin/activate
-  uvicorn app.main:app --reload --port "$BACKEND_PORT"
+  "$BACKEND_PYTHON" -m uvicorn app.main:app --reload --host 0.0.0.0 --port "$BACKEND_PORT"
 ) &
 BACKEND_PID="$!"
 

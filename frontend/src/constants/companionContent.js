@@ -1,126 +1,99 @@
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
-export const ASSISTANT_NAME = "Eclps Assistance";
+const configuredApiUrl = (import.meta.env.VITE_API_URL || "").trim();
+
+export const API_URL = configuredApiUrl.replace(/\/+$/, "") || "/api";
+export const ASSISTANT_NAME = "ECLPS";
 
 export const starterMessages = [
   {
+    id: "starter",
     role: "assistant",
-    content:
-      "Hai, aku Eclps Assistance. Aku siap nemenin kamu ngobrol dengan tenang.",
+    content: "Hei. Line-nya sudah kebuka — lagi kepikiran apa?",
   },
 ];
 
 export const signals = [
-  { label: "Persona", value: ASSISTANT_NAME },
-  { label: "Memory", value: "Personal recall" },
-  { label: "Tone", value: "Warm companion" },
+  { label: "Channel", value: "One-to-one" },
+  { label: "Memory", value: "Ready" },
+  { label: "Tone", value: "Auto" },
 ];
 
 export const tickerWords = [
-  "Private Companion",
-  "Personal Memory",
-  "Mood Reading",
-  "Soft Conversation",
-  "Context Flow",
-  "Calm Interface",
-  "Human Tone",
-  "Daily Presence",
-];
-
-export const interfaceLines = [
-  "presence.sync = active",
-  "memory.recall = gentle",
-  "mood.signal = calm",
-  "reply.style = companion",
-];
-
-export const orbitMedia = [
-  "Companion UI",
-  "Mood Signal",
-  "Memory Vault",
-  "Private Room",
-  "Tone Flow",
-  "Daily Recall",
-  "Soft Reply",
-  "Focus Space",
+  "Open line",
+  "Memory slot",
+  "Local first",
+  "No judgement",
+  "Tone check",
+  "After hours",
+  "Stay in thread",
+  "Real conversation",
 ];
 
 export const stickyChapters = [
   {
     id: "presence",
-    label: "01",
+    label: "01 / OPEN LINE",
     eyebrow: "Presence",
-    title: "Selalu masuk dengan rasa yang pas.",
-    text: "Eclps membaca ritme percakapanmu, lalu menjaga jawaban tetap hangat, jernih, dan tidak terasa kaku.",
-    accent: "listening field",
-    visualWords: ["pulse", "listen", "presence", "near"],
-    layout: "split",
-    details: ["Realtime feel", "Gentle reply", "Natural pacing"],
-    sheetTitle: "All your companion signals",
-    sheetMeta: "Presence calibrated",
-    icon: "waves",
-    variant: "presence",
+    title: "Nangkap konteks, bukan cuma kata terakhir.",
+    text: "ECLPS mengikuti benang obrolan supaya balasannya nyambung dan nggak terasa seperti mulai dari nol.",
+    accent: "Signal locked",
+    details: ["Context scan", "Natural pace", "Zero scripts"],
+    icon: "radio",
   },
   {
     id: "memory",
-    label: "02",
+    label: "02 / MEMORY SLOT",
     eyebrow: "Memory",
-    title: "Mengikat hal penting tanpa membuat obrolan terasa berat.",
-    text: "Detail kecil seperti nama, minat, dan kebiasaan bisa muncul kembali saat dibutuhkan, seolah kamu sedang bicara dengan teman yang memperhatikan.",
-    accent: "private recall",
-    visualWords: ["recall", "notes", "identity", "thread"],
-    layout: "reverse",
-    details: ["Personal notes", "Soft reminders", "Context thread"],
-    sheetTitle: "Inventory of personal context",
-    sheetMeta: "Memory arranged",
-    icon: "memory",
-    variant: "memory",
+    title: "Hal kecil nggak langsung hilang dari radar.",
+    text: "Nama, minat, dan detail yang kamu titipkan bisa dipanggil lagi saat memang relevan.",
+    accent: "Recall armed",
+    details: ["Personal notes", "Relevant recall", "Thread saved"],
+    icon: "database",
   },
   {
     id: "mood",
-    label: "03",
-    eyebrow: "Mood",
-    title: "Nada bicara berubah mengikuti suasana.",
-    text: "Saat kamu butuh ditemani, dibantu berpikir, atau sekadar didengar, Eclps menyesuaikan respons tanpa kehilangan karakter utamanya.",
-    accent: "emotional signal",
-    visualWords: ["mood", "tone", "warmth", "soft"],
-    layout: "overlay",
-    details: ["Tone shift", "Calm support", "Emotional reading"],
-    sheetTitle: "Event and emotional emissions",
-    sheetMeta: "Tone synchronized",
-    icon: "moon",
-    variant: "mood",
+    label: "03 / TONE DIAL",
+    eyebrow: "Read the room",
+    title: "Tahu kapan harus bantu. Tahu kapan cukup dengar.",
+    text: "Tone menyesuaikan suasana tanpa berubah jadi motivator dadakan atau robot customer service.",
+    accent: "Tone synced",
+    details: ["Mood check", "Calm support", "No lectures"],
+    icon: "sliders",
   },
   {
     id: "private",
-    label: "04",
+    label: "04 / LOCAL MODE",
     eyebrow: "Private",
-    title: "Ruang obrolan terasa personal dan aman.",
-    text: "Percakapan dirancang untuk terasa dekat, rapi, dan terkendali, dengan pengalaman visual yang tenang seperti studio digital premium.",
-    accent: "quiet space",
-    visualWords: ["local", "quiet", "secure", "space"],
-    layout: "stacked",
-    details: ["Private room", "Clean focus", "Controlled flow"],
-    sheetTitle: "Unit quality and private focus",
-    sheetMeta: "Space protected",
-    icon: "fingerprint",
-    variant: "private",
+    title: "Obrolanmu tetap di stack milikmu.",
+    text: "Dibangun untuk berjalan lokal, dengan kontrol yang tetap ada di tanganmu — bukan di tab yang entah ke mana.",
+    accent: "Local only",
+    details: ["Local database", "No public feed", "Full control"],
+    icon: "lock",
   },
 ];
 
 export const qualities = [
   {
-    icon: "brain",
-    title: "Context aware",
-    text: "Membaca percakapan terbaru, mood, dan intent sebelum menjawab.",
+    icon: "scan",
+    number: "01",
+    title: "Tracks the thread",
+    text: "Membaca percakapan terbaru, intent, dan mood sebelum menjawab.",
   },
   {
-    icon: "memory",
-    title: "Personal memory",
-    text: "Mengingat detail penting seperti nama, minat, dan hal yang kamu minta.",
+    icon: "database",
+    number: "02",
+    title: "Keeps your lore",
+    text: "Menyimpan detail yang kamu minta dan memanggilnya saat berguna.",
   },
   {
-    icon: "heart",
-    title: "Companion tone",
-    text: "Dibentuk sebagai teman ngobrol yang hangat, responsif, dan tidak menghakimi.",
+    icon: "shield",
+    number: "03",
+    title: "Stays on your side",
+    text: "Menemani tanpa menghakimi, menggurui, atau mengambil alih obrolan.",
   },
+];
+
+export const quickPrompts = [
+  "Gue lagi overthinking.",
+  "Bantu rapihin ide gue.",
+  "Ada cerita random nih.",
 ];

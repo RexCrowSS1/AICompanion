@@ -1,31 +1,90 @@
 .ticker-band {
+  position: relative;
+  z-index: 2;
   overflow: hidden;
-  border-top: 1px solid rgba(245, 240, 230, 0.14);
-  border-bottom: 1px solid rgba(245, 240, 230, 0.14);
-  background: #f5f0e6;
-  color: #070908;
+  border-top: var(--line);
+  border-bottom: var(--line);
+  background: var(--acid);
+  color: var(--ink);
+  transform: rotate(-0.6deg) scale(1.01);
 }
 
-.ticker-band div {
+.ticker-band::before,
+.ticker-band::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: min(10vw, 120px);
+  pointer-events: none;
+}
+
+.ticker-band::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--acid), transparent);
+}
+
+.ticker-band::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--acid), transparent);
+}
+
+.ticker-band > div {
   width: max-content;
   display: flex;
-  gap: 0;
-  padding: 15px 0;
-  animation: tickerMove 24s linear infinite;
+  padding: 14px 0;
+  animation: tickerMove 28s linear infinite;
   will-change: transform;
+}
+
+.ticker-band:hover > div {
+  animation-play-state: paused;
+}
+
+.ticker-band.is-paused > div {
+  animation-play-state: paused;
+}
+
+.ticker-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--blue);
+  transform: translateY(-50%);
 }
 
 .ticker-track {
   display: inline-flex;
-  gap: 34px;
-  padding-right: 34px;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
 }
 
-.ticker-band span {
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+.ticker-track > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
+.ticker-track > span::after {
+  content: "✦";
+  font-family: var(--ui);
+  font-size: 14px;
+}

@@ -1,30 +1,29 @@
-import heroImage from "../../assets/eclps-hero.png";
-import { ASSISTANT_NAME, orbitMedia } from "../../constants/companionContent";
-
 export default function CinematicStrip() {
   return (
-    <section className="cinematic-strip" aria-label="AI companion cinematic scroll">
-      <div className="cinematic-word left">DIGITAL</div>
-      <div className="cinematic-word right">COMPANION</div>
-      <div className="cinematic-core" data-cursor="focus">
-        <img src={heroImage} alt="" />
-        <span>{ASSISTANT_NAME}</span>
+    <section className="cinematic-strip" aria-labelledby="story-title">
+      <div className="story-index" aria-hidden="true">03</div>
+      <div className="story-copy" data-scroll-motion>
+        <p className="eyebrow">BUILT FOR THE IN-BETWEEN // 03</p>
+        <h2 id="story-title">
+          IDE SETENGAH JADI. CURHAT JAM 2. HAL KECIL YANG MAU KAMU LANJUTKAN BESOK.
+        </h2>
+        <p>
+          ECLPS menjaga benangnya tetap nyambung. Kamu nggak perlu bikin briefing
+          baru setiap kali balik.
+        </p>
       </div>
-      <div className="cinematic-orbit" aria-hidden="true">
-        {orbitMedia.map((item, index) => (
-          <div className="cinematic-card" style={{ "--i": index }} key={item}>
-            <img src={heroImage} alt="" />
-            <strong>{item}</strong>
-          </div>
-        ))}
+      <div className="memory-disc" data-scroll-motion aria-hidden="true">
+        <div className="disc-copy">
+          <span>KEEP</span>
+          <strong>THE</strong>
+          <span>THREAD</span>
+        </div>
+        <i />
       </div>
-      <div className="cinematic-caption">
-        <span>Scroll reactive presence</span>
-        <strong>Visual companion space</strong>
-      </div>
-      <div className="cinematic-sheet">
-        <strong>All your companion signals</strong>
-        <span>Private, emotional, and contextual flow</span>
+      <div className="story-ticket" data-scroll-motion>
+        <span>SESSION PASS</span>
+        <strong>ECLPS // ALL ACCESS</strong>
+        <small>Valid whenever your head gets loud.</small>
       </div>
     </section>
   );

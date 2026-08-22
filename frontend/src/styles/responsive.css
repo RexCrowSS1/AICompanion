@@ -1,104 +1,244 @@
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    scroll-behavior: auto;
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
+  .hero-copy {
+    padding: 42px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(68px, 8.4vw, 96px);
+  }
+
+  .buddy-window {
+    margin: 14px;
+  }
+
+  .buddy-stage {
+    min-height: 480px;
+  }
+
+  .story-copy h2 {
+    font-size: clamp(54px, 6.6vw, 78px);
+  }
+
+  .memory-callout {
+    grid-template-columns: auto 1fr;
+  }
+
+  .memory-copy {
+    grid-column: 2;
+    max-width: 600px;
   }
 }
 
-@media (max-width: 1080px) {
-  h1 {
-    font-size: 84px;
+@media (max-width: 900px) {
+  .topbar-frame {
+    grid-template-columns: 1fr auto;
   }
 
-  .hero-stage::before,
-  .experience-heading h2 {
-    font-size: 72px;
+  .nav-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 6px;
+    padding-top: 5px;
+    border-top: 1px solid var(--ink);
   }
 
-  .chapter-copy h3,
-  .section-heading h2,
-  .memory-band h2 {
-    font-size: 54px;
+  .nav-links a {
+    padding: 6px 8px;
+    text-align: center;
   }
 
-  .chapter-shell,
-  .layout-split .chapter-shell,
-  .layout-reverse .chapter-shell,
-  .layout-overlay .chapter-shell,
-  .layout-stacked .chapter-shell {
+  .hero-grid {
+    min-height: 0;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "copy"
-      "visual";
   }
 
-  .chapter-copy,
-  .chapter-visual,
-  .layout-overlay .chapter-visual,
-  .layout-stacked .chapter-visual {
-    min-height: 460px;
+  .hero-copy {
+    min-height: 620px;
   }
 
-  .layout-overlay .chapter-copy {
-    width: auto;
-    min-height: 420px;
-    align-self: stretch;
-    justify-self: stretch;
-    margin: 0;
-    grid-area: copy;
+  .hero-copy h1 {
+    max-width: 760px;
+    font-size: clamp(76px, 11.5vw, 106px);
   }
 
-  .layout-stacked .chapter-copy {
-    min-height: 420px;
-    display: flex;
+  .buddy-window {
+    min-height: 610px;
+    margin: 18px;
   }
 
-  .layout-stacked .chapter-copy > span {
-    margin-bottom: auto;
+  .cinematic-strip {
+    min-height: 920px;
+    grid-template-columns: 1fr;
+    align-content: center;
   }
 
-  .layout-stacked .chapter-copy .eyebrow,
-  .layout-stacked .chapter-copy h3,
-  .layout-stacked .chapter-copy p:not(.eyebrow),
-  .layout-stacked .chapter-detail-grid,
-  .layout-stacked .chapter-accent {
-    grid-column: auto;
-    grid-row: auto;
+  .story-copy {
+    max-width: 720px;
   }
 
-  .layout-split .chapter-visual,
-  .layout-reverse .chapter-visual,
-  .layout-stacked .chapter-visual {
-    clip-path: none;
+  .story-copy h2 {
+    font-size: clamp(58px, 9.2vw, 84px);
   }
 
-  .sticky-chapter {
-    min-height: auto;
-    padding-bottom: 28px;
+  .memory-disc {
+    justify-self: end;
+    width: min(390px, 55vw);
   }
 
-  .chapter-shell {
-    position: relative;
-    top: auto;
+  .experience-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-heading > p {
+    width: max-content;
+  }
+
+  .system-card {
+    min-height: 530px;
+  }
+
+  .chat-layout {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+
+  .side-panel {
+    padding: 12px;
+  }
+
+  .state-block {
+    grid-template-columns: 1fr;
+  }
+
+  .state-block > div {
+    border-right: 0;
+    border-bottom: 1px solid rgba(241, 238, 220, 0.4);
+  }
+
+  .state-block > div:last-child {
+    border-bottom: 0;
+  }
+
+  .system-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quality-card:last-child {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 980px) {
-  .hero-section {
-    min-height: auto;
+@media (max-width: 720px) {
+  .hero-section,
+  .sticky-experience,
+  .product-band,
+  .system-grid,
+  .memory-band {
+    width: min(100% - 24px, 1280px);
   }
 
-  .hero-stage {
-    min-height: 520px;
+  .topbar {
+    padding: 10px 12px 0;
+  }
+
+  .topbar-frame {
+    min-height: 58px;
+    padding: 6px;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .online-pill {
+    min-height: 38px;
+    padding: 0 11px;
+  }
+
+  .hero-section {
+    padding-bottom: 52px;
+  }
+
+  .hero-utility {
+    grid-template-columns: 1fr 1fr;
+    font-size: 8px;
+  }
+
+  .hero-utility span:nth-child(2) {
+    display: none;
+  }
+
+  .hero-copy {
+    min-height: 570px;
+    padding: 34px 26px;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(62px, 14.8vw, 88px);
+  }
+
+  .hero-text {
+    font-size: 16px;
+  }
+
+  .buddy-window {
+    min-height: 570px;
+    margin: 12px;
+  }
+
+  .buddy-stage {
+    min-height: 490px;
+  }
+
+  .cinematic-strip {
+    min-height: auto;
+    margin: 80px 0;
+    padding: 90px 20px 50px;
+    gap: 55px;
+  }
+
+  .story-copy h2 {
+    font-size: clamp(50px, 12vw, 72px);
+  }
+
+  .memory-disc {
+    justify-self: center;
+    width: min(360px, 82vw);
+  }
+
+  .story-ticket {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    justify-self: end;
+  }
+
+  .sticky-experience {
+    padding-bottom: 76px;
+  }
+
+  .experience-heading h2,
+  .section-heading h2 {
+    font-size: clamp(52px, 12.5vw, 76px);
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-card {
+    min-height: 480px;
+  }
+
+  .system-card h3 {
+    font-size: clamp(40px, 9vw, 58px);
   }
 
   .section-heading {
@@ -111,152 +251,270 @@
   }
 
   .side-panel {
+    overflow: visible;
     border-right: 0;
-    border-bottom: 1px solid rgba(245, 240, 230, 0.14);
+    border-bottom: 3px solid var(--ink);
   }
 
   .state-block {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .chat-panel {
-    height: min(650px, calc(100vh - 96px));
-    min-height: 520px;
-  }
-
-  .system-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .topbar,
-  .hero-section,
-  .product-band,
-  .system-grid,
-  .memory-band,
-  .sticky-experience {
-    width: min(100% - 24px, 1320px);
-  }
-
-  .topbar {
-    height: 64px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .brand {
-    font-size: 13px;
-  }
-
-  .hero-meta {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .hero-meta span,
-  .hero-meta span:nth-child(2),
-  .hero-meta span:nth-child(3) {
-    text-align: left;
-  }
-
-  .hero-stage {
-    min-height: 480px;
-  }
-
-  h1 {
-    font-size: 58px;
-  }
-
-  .hero-stage::before {
-    font-size: 52px;
-  }
-
-  .hero-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-visual {
-    width: 160px;
-    height: 116px;
-  }
-
-  .interface-card {
-    bottom: 186px;
-  }
-
-  .signal-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .signal-strip div {
-    border-right: 0;
-    border-bottom: 1px solid rgba(245, 240, 230, 0.12);
-  }
-
-  .signal-strip div:last-child {
+  .state-block > div {
+    border-right: 1px solid rgba(241, 238, 220, 0.4);
     border-bottom: 0;
   }
 
-  .sticky-experience {
-    padding-top: 68px;
+  .state-block > div:last-child {
+    border-right: 0;
   }
 
-  .experience-heading h2,
-  .section-heading h2,
-  .memory-band h2 {
-    font-size: 40px;
+  .prompt-bank {
+    margin-top: 6px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .chapter-shell {
-    gap: 12px;
-    padding: 12px 0;
+  .prompt-bank > span {
+    grid-column: 1 / -1;
   }
 
-  .chapter-copy,
-  .chapter-visual {
-    min-height: 390px;
-  }
-
-  .chapter-copy {
-    padding: 20px;
-  }
-
-  .chapter-copy h3 {
-    font-size: 34px;
-  }
-
-  .chapter-detail-grid,
-  .layout-overlay .chapter-depth {
-    grid-template-columns: 1fr;
-  }
-
-  .chapter-readout {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .product-band {
-    padding-top: 56px;
-  }
-
-  .chat-panel {
-    height: min(600px, calc(100vh - 88px));
-    min-height: 500px;
+  .prompt-bank button {
+    min-height: 54px;
   }
 
   .messages {
-    padding: 18px;
+    height: min(520px, 58svh);
+  }
+
+  .system-grid {
+    padding: 52px 0 82px;
+    grid-template-columns: 1fr;
+  }
+
+  .quality-card,
+  .quality-card:last-child {
+    grid-column: auto;
+    min-height: 260px;
+  }
+
+  .memory-callout {
+    padding: 40px 28px;
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .memory-copy {
+    grid-column: auto;
+  }
+
+  .memory-callout h2 {
+    font-size: clamp(52px, 11.5vw, 76px);
+  }
+
+  .footer-row {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .footer-row span:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-copy small {
+    display: none;
+  }
+
+  .brand-copy strong {
+    font-size: 20px;
+  }
+
+  .online-pill {
+    font-size: 0;
+  }
+
+  .online-pill::after {
+    content: "Chat";
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .hero-utility span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hero-copy {
+    min-height: 530px;
+    padding: 30px 20px;
+  }
+
+  .hero-copy::after {
+    display: none;
+  }
+
+  .hero-chip {
+    margin-bottom: 24px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(50px, 15vw, 70px);
+    line-height: 0.82;
+  }
+
+  .hero-text {
+    margin-top: 28px;
+    font-size: 14px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .primary-action,
+  .secondary-action {
+    width: 100%;
+  }
+
+  .hero-proof {
+    gap: 9px 12px;
+  }
+
+  .hero-proof span {
+    font-size: 8px;
+  }
+
+  .buddy-window {
+    min-height: 500px;
+    margin: 9px;
+  }
+
+  .buddy-stage {
+    min-height: 415px;
+  }
+
+  .buddy-avatar {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(0.8);
+  }
+
+  .player-sticker,
+  .status-sticker {
+    padding: 6px 7px;
+    font-size: 16px;
+  }
+
+  .profile-caption strong {
+    font-size: 25px;
+  }
+
+  .signal-strip > div {
+    padding: 9px 7px;
+  }
+
+  .story-copy h2 {
+    font-size: clamp(45px, 13vw, 61px);
+  }
+
+  .story-copy > p:last-child {
+    font-size: 14px;
+  }
+
+  .memory-disc {
+    width: min(290px, 82vw);
+  }
+
+  .experience-heading h2,
+  .section-heading h2 {
+    font-size: clamp(47px, 14vw, 63px);
+  }
+
+  .system-card {
+    min-height: 500px;
+    padding: 24px 20px;
+  }
+
+  .system-icon {
+    right: 20px;
+  }
+
+  .system-card h3 {
+    padding-right: 78px;
+    font-size: clamp(37px, 11vw, 48px);
+  }
+
+  .chapter-detail-grid small {
+    padding: 6px 4px;
+    font-size: 7px;
+  }
+
+  .chat-layout {
+    box-shadow: 6px 6px 0 var(--blue), 9px 9px 0 var(--acid);
+  }
+
+  .prompt-bank {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .prompt-bank > span {
+    flex-basis: 100%;
+  }
+
+  .prompt-bank button {
+    width: auto;
+    min-height: 40px;
+    flex: 1 1 135px;
+  }
+
+  .messages {
+    height: min(460px, 56svh);
+    padding: 16px;
   }
 
   .message {
-    max-width: 94%;
+    max-width: 92%;
   }
 
   .composer {
-    grid-template-columns: 1fr 52px;
-    padding: 12px;
+    padding: 10px;
+    grid-template-columns: minmax(0, 1fr) 58px;
   }
+
+  .composer > button {
+    width: 58px;
+  }
+
+  .composer > button span {
+    display: none;
+  }
+
+  .composer textarea {
+    font-size: 16px;
+  }
+
+  .quality-card {
+    min-height: 240px;
+  }
+
+  .memory-callout {
+    padding: 34px 20px;
+  }
+
+  .memory-callout h2 {
+    font-size: clamp(44px, 13vw, 62px);
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--acid);
 }

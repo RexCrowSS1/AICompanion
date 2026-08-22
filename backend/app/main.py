@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from psycopg import Error as PostgresError
 
 from .companion import build_reply
 from .db import get_conn
@@ -18,7 +19,11 @@ allowed_origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_origin_regex=(
+        r"^(?:https://.*\.vercel\.app|"
+        r"http://(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|"
+        r"172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}):(?:5173|5174))$"
+    ),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -26,7 +31,7 @@ app.add_middleware(
 
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(min_length=1, max_length=600)
     conversation_id: int | None = None
 
 
@@ -79,7 +84,12 @@ def get_or_create_conversation(conn, conversation_id: int | None) -> int:
 
 @app.get("/health")
 def health():
-    return {"ok": True}
+    try:
+        with get_conn() as conn:
+            conn.execute("select 1").fetchone()
+    except PostgresError as error:
+        raise HTTPException(status_code=503, detail="Database is unavailable") from error
+    return {"ok": True, "database": "ready"}
 
 
 @app.post("/session/reset", response_model=ResetSessionResponse)
