@@ -70,7 +70,7 @@ export default function HeroSection() {
               <small>READY WHEN YOU ARE.</small>
             </div>
           </div>
-          <div className="signal-strip" aria-label="Status ECLPS">
+          <div className="signal-strip" ariaflabel="Status ECLPS">
             {signals.map((signal) => (
               <div key={signal.label}>
                 <span>{signal.label}</span>
